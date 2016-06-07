@@ -37,13 +37,14 @@ loop do
 
   user_purchase = Purchase.create(user_id: user.id, item_id: item.id, quantity: quantity)
   puts
-  puts "---Aardwolf Inc.---"
-  puts "Purchase invoice ##{user_purchase.id}"
-  puts "#{user.first_name} #{user.last_name}"
-  puts "#{item.description} x#{user_purchase.quantity}"
-  puts "     at $#{user_purchase.item.price.to_f.round(2)} each"
-  puts "     total: $#{((user_purchase.item.price.to_f)*(user_purchase.quantity)).round(2)}"
-  puts "Purchase made at #{user_purchase.created_at}"
+  puts "---Aardwolf Inc.---".center(40)
+  puts "Purchase invoice ##{user_purchase.id}".center(40)
+  puts "#{user.first_name} #{user.last_name}".center(40)
+  puts "#{item.description} x#{user_purchase.quantity}".center(40)
+  puts "at $#{user_purchase.item.price.to_f.round(2)} each".center(40)
+  puts "total: $#{((user_purchase.item.price.to_f)*(user_purchase.quantity)).round(2)}".center(40)
+  puts "Purchase made at #{user_purchase.created_at}".center(40)
+  puts "-------------------".center(40)
   puts
   puts "Would you like to make another purchase (y/n)?"
   input = gets.chomp
