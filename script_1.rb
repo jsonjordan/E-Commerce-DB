@@ -36,6 +36,20 @@ puts "We sold #{sold} Mediocre Copper Bottles"
 #5. What is our total revenue (item cost * quantity sold for all purchases)?
 all_purchases = Purchase.all
 total_revenue = all_purchases.map {|purch| (purch.item.price.to_f)*(purch.quantity)}.reduce(:+)
-
+#too many queries to the db
 puts
 puts "Our total revenue is $#{total_revenue.round(2)}!"
+
+#6. How much did Carmelo Towne spend?-------------
+all_users = User.all
+carmelo_user = all_users.find_by(first_name: "Carmelo", last_name: "Towne")
+carmelo_spend = all_purchases.where(user_id: carmelo_user.id).map{|purch| (purch.item.price.to_f)*(purch.quantity)}.reduce(:+)
+#too many queries to the db
+puts
+puts "Carmelo Towne spent $#{carmelo_spend.round(2)}"
+
+#7. How many users have > 1 address?-------------
+mult_addresses = all_users.select{|user| user.addresses.count > 1}
+#too many queries to the db
+puts
+puts "There are #{mult_addresses.count} users with multiple addresses"
