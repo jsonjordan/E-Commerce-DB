@@ -26,6 +26,7 @@ puts
 puts "#{p_falls.user.first_name} #{p_falls.user.last_name} lives at 7153 Predovic Falls."
 
 #4. How many Mediocre Copper Bottles did we sell?--
+
 mcb_item = all_items.find_by(description: "Mediocre Copper Bottle")
 sold = mcb_item.purchases.map {|purch| purch.quantity}.reduce(:+)
 
@@ -44,12 +45,13 @@ puts "Our total revenue is $#{total_revenue.round(2)}!"
 
 carmelo_user = all_users.find_by(first_name: "Carmelo", last_name: "Towne")
 carmelo_spend = all_purchases.where(user_id: carmelo_user.id).map{|purch| (purch.item.price.to_f)*(purch.quantity)}.reduce(:+)
-#too many queries to the db
-puts
+#too many queries to the
 
+puts
 puts "Carmelo Towne spent $#{carmelo_spend.round(2)}"
 
 #7. How many users have > 1 address?-------------
+
 mult_addresses = all_users.select{|user| user.addresses.count > 1}
 #too many queries to the db
 
