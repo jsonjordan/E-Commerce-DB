@@ -9,11 +9,10 @@ puts "What is your last name?"
 last_name = gets.chomp
 
 user = User.where(first_name: first_name, last_name: last_name).first_or_create!
+all_items = Item.all
 loop do
   # Displays a list of available items
 
-  all_items = Item.all
-  # item_list = all_items.map{|item| item.description}
   puts
   puts "Avaliable Items:"
   all_items.each do |item|
